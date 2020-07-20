@@ -11,7 +11,7 @@ import (
 )
 
 func TestFtpSession(t *testing.T)  {
-	ftp := NewFtpSession("211.110.226.57:9921" , "flotmp1" , "flotmp!@#")
+	ftp := NewFtpSession("" , "" , "")
 
 	err := ftp.Connect()
 	if err != nil {

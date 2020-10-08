@@ -238,6 +238,15 @@ func (f *FtpSession)Retr(src string , dest string) error{
 	return w.Flush()
 }
 
+func (f *FtpSession)RetrMem(src string) ([]byte , error)  {
+	response , err := f.Client.Retr(src)
+	if err != nil {
+		return nil , err
+	}
+	defer response.Close()
+	return  ioutil.ReadAll(response)
+}
+
 func (f *FtpSession)GetFileInfo(target string)(*FtpFileInfo , error){
 
 	list , err := f.Client.List(path.Dir(target))
